@@ -6,6 +6,7 @@ import './db';
 import './seedData'
 import usersRouter from './api/users';
 
+
 dotenv.config();
 const errHandler = (err, req, res, next) => {
   /* if the error in development then send stack trace to display whole error,
