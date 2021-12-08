@@ -7,9 +7,13 @@ const Schema = mongoose.Schema;
   
   const UserSchema = new Schema({
     username: { type: String, unique: true, required: true},
-    password: {type: String, required: true },
+    password: {type: String, required: true, validate: {validator: passwordValidator }},
     favourites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movies'}]
   });
+
+  function passwordValidator(password){
+    
+  }
 
   UserSchema.statics.findByUserName = function (username) {
     return this.findOne({ username: username });
