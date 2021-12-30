@@ -28,21 +28,20 @@ export const getMovies = () => {
   });
 };
 
-// export const getMovie = (args) => {
-//     // console.log(args)
-//     const id = args
-//     return fetch(
-//       `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_KEY}`
-//     ).then((response) => {
-//       if (!response.ok) {
-//         throw new Error(response.json().message);
-//       }
-//       return response.json();
-//     })
-//     .catch((error) => {
-//       throw error
-//    });
-//   };
+export const getMovie = (args) => {
+    const id = args
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_KEY}`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
     
 export const getTopRated = async () => {
     return fetch(
