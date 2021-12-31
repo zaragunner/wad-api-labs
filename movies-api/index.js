@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import moviesRouter from './api/movies';
 import genresRouter from './api/genres';
+import showsRouter from './api/shows'
 import './db';
 import './seedData'
 import usersRouter from './api/users';
@@ -26,6 +27,7 @@ app.use(passport.initialize());
 const port = process.env.PORT;
 app.use(express.json());
 app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
+app.use('/api/shows', passport.authenticate('jwt', {session: false}),showsRouter);
 app.use('/api/genres', genresRouter );
 app.use('/api/users', usersRouter);
 app.use(errHandler);
