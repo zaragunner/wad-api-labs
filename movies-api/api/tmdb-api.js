@@ -84,5 +84,20 @@ export const getTopRated = async () => {
            throw error
         });
       };
+
+      export const getShow = (args) => {
+        const id = args
+        return fetch(
+          `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.TMDB_KEY}&language=en-US`
+        ).then((response) => {
+          if (!response.ok) {
+            throw new Error(response.json().message);
+          }
+          return response.json();
+        })
+        .catch((error) => {
+          throw error
+       });
+      };
     
   

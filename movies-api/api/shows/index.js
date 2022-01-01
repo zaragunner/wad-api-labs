@@ -1,7 +1,7 @@
 
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import { getTvShows, getTvListings } from '../tmdb-api'
+import { getTvShows, getTvListings, getShow } from '../tmdb-api'
 
 const router = express.Router(); 
 
@@ -15,5 +15,10 @@ router.get('/tmdb/tvshows', asyncHandler( async(req, res) => {
     res.status(200).json(listings);
   }));
 
+  router.get('/tmdb/tvshows/:id', asyncHandler( async(req, res) => {
+    const id = parseInt(req.params.id);
+    const show = await getShow(id);
+    res.status(200).json(show);
+  }));
   export default router;
 
